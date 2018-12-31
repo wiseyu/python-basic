@@ -1,0 +1,51 @@
+import urllib
+
+# Upload data from GitHub to notebook's local drive
+url = "https://raw.githubusercontent.com/GokuMohandas/practicalAI/master/data/titanic.csv"
+response = urllib.request.urlopen(url)
+html = response.read()
+with open('titanic.csv', 'wb') as f:
+    f.write(html)
+
+df.describe()
+df["age"].hist()
+df["embarked"].unique()
+df["name"].head()
+df[df["sex"]=="female"].head()
+df.sort_values("age", ascending=False).head()
+
+# 数据聚合
+survived_group = df.groupby("survived")
+survived_group.mean()
+
+# 使用索引用 iloc 查看数据
+df.iloc[0, :] # iloc 函数通过索引中的特定位置查看某行或列的数据，所以这里的索引值应该只接受整数
+# 获取指定位置的数据
+df.iloc[0, 1]
+# 根据索引值用 loc 查看
+df.loc[0]   
+
+# 查看含有至少一个NaN值的数据
+df[pd.isnull(df).any(axis=1)].head()
+# 删除含有NaN值的数据行
+df = df.dropna() # 删除含有NaN值的行
+df = df.reset_index() # 重置行的索引
+df.head()
+
+# 删除多列
+df = df.drop(["name", "cabin", "ticket"], axis=1) # 暂时不需要类型为文本的数据条目
+df.head()
+
+# 特征值映射
+df['sex'] = df['sex'].map( {'female': 0, 'male': 1} ).astype(int)
+df["embarked"] = df['embarked'].dropna().map( {'S':0, 'C':1, 'Q':2} ).astype(int)
+df.head()
+
+# 用lambda表达式创建新特征
+def get_family_size(sibsp, parch):
+    family_size = sibsp + parch
+    return family_size
+
+df["family_size"] = df[["sibsp", "parch"]].apply(lambda x: get_family_size(x["sibsp"], x["parch"]), axis=1)
+df.head()
+
