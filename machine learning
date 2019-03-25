@@ -1,0 +1,42 @@
+source 1:
+https://github.com/clone95/Machine-Learning-Study-Path-March-2019
+
+https://mp.weixin.qq.com/s/XS8gEzRaPc2_8q2SEvd_1A
+一位名叫Giacomo Ciarlini的意大利小哥就发现了个这问题，为了帮老板带新人，他把机器学习领域所需要的知识都整理成了一条机器学习路线图：
+
+从编程和数学开始，逐渐学会各种概念、方法、神经网络，之后研究开源项目，终将成为一代机器学习专家。
+就像从新手村一路升级打怪到满级一样，你可以跟着这条路线图，成长为装备齐全、技能全面、经验丰富的大神玩家。
+
+---提前准备
+Python
+Jupyter笔记本
+数学
+机器学习概况
+
+---用Scikit-Learn做机器学习
+为什么用Scikit-Learn?
+端到端的机器学习项目
+线性回归
+分类
+训练模型
+支持向量机
+决策树
+集成学习和随机森林
+无监督学习
+回顾
+
+---TensorFlow与神经网络
+为什么要用TensorFlow？
+TensorFlow启动并运行
+ANN - 人工神经网络
+CNN - 卷积神经网络
+RNN - 循环神经网络
+训练网络：最佳实践
+自动编码
+强化学习
+下一步
+
+---一些实用资料
+机器学习项目
+数据科学工具
+安利一些博主
