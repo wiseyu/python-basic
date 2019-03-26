@@ -1,0 +1,35 @@
+
+https://zhuanlan.zhihu.com/p/58314015
+url = "http://data.cityofdenton.com/dataset/17695047-0aeb-46a2-a9db-66847743ed1c/resource/d356a409-6764-46d7-942d-4d5a7ffb1c28/download/crime_data_20190301.csv"
+!wget {url}
+import pandas as pd
+df = pd.read_csv('crime_data_20190301.csv')
+df.crime.value_counts().iloc[:10]
+df.crime.value_counts().iloc[:10].sort_values().plot(kind='barh')
+robbery = df[df.crime.str.contains('ROBBERY')]; robbery.head()
+robbery.groupby('locname').size().sort_values(ascending=False)
+robbery.groupby('locname').size().sort_values(ascending=False).head(10).sort_values().plot(kind='barh')
+
+regex = r"\d+XX\s(?P<street>.*)"
+subst = "\\g<street>"
+robbery.groupby('street').size().sort_values(ascending=False).head(10)
+!pip install python-dateutil
+from dateutil.parser import *
+robbery["year"] = robbery.incidentdatetime.apply(lambda x: parse(x).year)
+robbery["month"] = robbery.incidentdatetime.apply(lambda x: parse(x).month)
+
+robbery["hour"] = robbery.incidentdatetime.apply(lambda x: parse(x).hour)
+robbery.head()
+robbery.groupby('year').size()
+robbery = robbery[~(robbery.year == 2019)]
+robbery.groupby('year').size().plot()
+robbery.groupby('month').size().plot(kind='bar')
+robbery[robbery.year==2018].groupby('month').size().plot(kind='bar')
+
+robbery.groupby('hour').size().plot(kind='bar')
+robbery[robbery.year==2018].groupby('hour').size().plot(kind='bar')
+robbery[robbery.year==2018].groupby(['month', 'hour']).size().unstack(0)
+robbery[robbery.year==2018].groupby(['month', 'hour']).size().unstack(0).fillna(0)
+我们希望绘制的，不是一张图，而是 12 张。分别代表 12 个月。这种图形，有个专门的名称，叫做“分面图”（facet plot）。 Pandas 的 plot 函数有一个非常方便的参数，叫做 subplots ，可以帮助我们轻松达成目标。
+
+每张图，我们依然采用柱状图的方式。因为默认方式绘制的图像，尺寸可能不符合我们的预期。因此我们显式指定图片的长宽。
