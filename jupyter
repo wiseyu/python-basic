@@ -1,0 +1,36 @@
+命令模式Command Mode
+按键	功能	按键	功能
+Enter	进入当前块的编辑模式	X	剪切选中的代码块
+Shift+Enter	运行当前块并选中下一块	C	复制选中的代码块
+Ctrl+Enter	运行当前块	Shift+V	在当前块上方粘贴
+Alt+Enter	运行当前块并在下方插入新块	V	在当前块下方粘贴
+Y	切换到代码状态	Z	撤销删除操作
+M	切换到MarkDown状态	D,D	删除选中的代码块
+R	切换到Raw NBConvert	Shift+M	将当前块与下一块合并
+数字键1到6	将当前块第一行变为MarkDown的n级标题	S / Ctrl+S	保存并设置检查点
+↑ / K	选择上一个代码块	L	显示/隐藏当前块的代码行号
+↓ / J	选择下一个代码块	O	显示/隐藏当前块的输出内容
+A	在当前块上方插入新代码块	Shift+O	显示/隐藏当前块的输出内容的滚动条
+B	在当前块下方插入新代码块	Esc / Q	关闭弹窗
+H	展示快捷键帮助	I,I	**打断**kernal运行
+Space	滚动向下	O,O	**重启**kernal
+Shift+Space	滚动向上	Shift+(↑/↓)	选中多个代码块
+
+编辑模式Edit Mode
+按键	功能	按键	功能
+Tab	代码补全/缩进	Ctrl+→	光标右移一个词
+Shift+Tab	工具提示/反缩进	Ctrl+Backspace	删除前一个词
+Ctrl+[	缩进	Ctrl+Delete	删除后一个词
+Ctrl+]	反缩进	Ctrl+M / Esc	进入命令模式
+Ctrl+A	全选	Ctrl+Shift+P	打开命令选择板
+Ctrl+Z	撤销	Shift+Enter	运行当前块并选中下一块
+Ctrl+Y / Ctrl+Shift+Z	重复	Ctrl+Enter	运行当前块
+Ctrl+Home	移动光标到块首	Alt+Enter	运行当前块并在下方插入新块
+Ctrl+End	移动光标到块尾	Ctrl+Shift+-	按光标位置分割当前块
+Ctrl+←	光标左移一个词	Ctrl+S	保存并设置检查点
+--------------------- 
+作者：Eswai 
+来源：CSDN 
+原文：https://blog.csdn.net/eswai/article/details/53642802 
+版权声明：本文为博主原创文章，转载请附上博文链接！
+=====================
